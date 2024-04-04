@@ -1,14 +1,12 @@
 const  { Router } = require('express');
-const { allAlquilables, crearAlquilable, findById } = require('../controllers/alquilable.controller')
+const controller = require('../controllers/alquilable.controller')
 const router = Router();
 
-router.get('/api/alquilable', allAlquilables);
-router.get('/api/alquilable/:id', findById);
+router.get('/api/alquilable', controller.allAlquilables);
+router.get('/api/alquilable/:id', controller.findById);
+router.post('/api/alquilable', controller.crearAlquilable);
+router.delete('/api/alquilable/:id', controller.deleteByid);
+router.put('/api/alquilable/:id', controller.updateById);
 
-router.post('/api/alquilable', crearAlquilable);
-
-router.delete('/api/alquilable', (req, res)=> {
-  res.status(200).json({mensaje: `Desde el delete del alquilable`});
-});
 
 module.exports = router;
